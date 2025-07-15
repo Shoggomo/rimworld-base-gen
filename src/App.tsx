@@ -92,13 +92,6 @@ function circlePoly(diameter: number): Polygon {
 }
 
 const defaultRooms: RoomNode[] = [
-  // {
-  //   ...roomNodeDefaults,
-  //   id: "center",
-  //   name: "Center",
-  //   polygon: rectPoly(1, 1),
-  //   innerPolygon: rectPoly(1, 1),
-  // },
   {
     ...roomNodeDefaults,
     id: "storage",
@@ -200,17 +193,6 @@ const defaultRoomLinks: RoomLink<string>[] = [
   },
 ];
 
-// // Add link to center for every room
-// defaultRooms
-//   .filter((link) => link.id !== "center")
-//   .forEach((room) => {
-//     defaultRoomLinks.push({
-//       source: room.id,
-//       target: "center",
-//       strength: 100,
-//     });
-//   });
-
 // Create link between all rooms, where none exists yet. This is to avoid unnecesary space between nodes
 defaultRooms.forEach((roomA, i) => {
   defaultRooms.forEach((roomB, j) => {
@@ -287,15 +269,9 @@ export default function App() {
   const newNodes = useMemo(() => {
     const newNodes = defaultRooms.map((room) => ({
       ...room,
-      // x: Math.random() * width,
-      // y: Math.random() * height,
       x: width / 2 + Math.random() * 2,
       y: height / 2 + Math.random() * 2,
     }));
-    // // put center into center
-    // const center = newNodes.find((node) => node.id === "center")!;
-    // center.fx = width / 2;
-    // center.fy = height / 2;
 
     return newNodes;
   }, []);
@@ -324,12 +300,7 @@ export default function App() {
           .distance(LINK_DISTANCE)
       )
       .force("center", forceCenter(width / 2, height / 2))
-      .force(
-        "collision",
-        forcePolygonCollision({
-          // excludeIds: ["center"],
-        })
-      )
+      .force("collision", forcePolygonCollision())
       .on(FAST_GENERATION ? "end" : "tick", () => {
         const nodes = simulation.nodes();
         // set rounded values for coordinates
@@ -355,29 +326,24 @@ export default function App() {
 
   return (
     <div>
-      <button>blah</button>
+      {/* Debugging view */}
       <svg height={height} width={width} style={{ scale: 3, margin: "100px" }}>
         <rect width={width} height={height} rx={14} fill={"#272b4d"} />
-        {nodes
-          // .filter((node) => node.id !== "center")
-          .map((node) => (
-            <g key={node.id}>
-              <polygon
-                points={node.polygon
-                  .map(([x, y]) => `${node.x! + x},${node.y! + y}`)
-                  .join(" ")}
-                fill="none"
-                stroke="red"
-                strokeWidth={1}
-              />
-
-              {/* <text x={node.x!} y={node.y!} fontSize={12} fill="#fff">
-                {node.name}
-              </text> */}
-            </g>
-          ))}
+        {nodes.map((node) => (
+          <g key={node.id}>
+            <polygon
+              points={node.polygon
+                .map(([x, y]) => `${node.x! + x},${node.y! + y}`)
+                .join(" ")}
+              fill="none"
+              stroke="red"
+              strokeWidth={1}
+            />
+          </g>
+        ))}
       </svg>
 
+      {/* Main view */}
       <svg
         width={GRID_WIDTH * GRID_SIZE}
         height={GRID_HEIGHT * GRID_SIZE}
