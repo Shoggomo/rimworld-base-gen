@@ -1,69 +1,51 @@
-# React + TypeScript + Vite
+# RimWorld Base Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A web application for generating optimal base layouts for RimWorld colonies.
 
-Currently, two official plugins are available:
+Design your buildings, set their relationships, and let the physics simulation automatically arrange them into an efficient layout. The app uses force-based algorithms to position buildings based on their connections and importance, creating functional colony designs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Use It Online
 
-## Expanding the ESLint configuration
+**[Open RimWorld Base Generator]()**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+No installation required - use it directly in your browser!
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Features
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### 🏗️ **Building Design**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- Create custom buildings with rectangular or circular shapes
+- Adjust building dimensions and colors
+- Visual representation with inner and outer areas
+- Pre-built building templates for common RimWorld structures
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 🔗 **Connection System**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- Define relationships between buildings with adjustable strength
+- Visual indicators for connection strength (Very Weak to Very Strong)
+- Automatic weak connections to prevent unnecessary spacing
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### 📋 **Quick Start Presets**
+
+- **Basic Colony**: Essential buildings for new colonies
+- **Industrial Base**: Production and research focused
+- **Defensive Outpost**: Fortified military layout
+- **Self-Sufficient Farm**: Agricultural and food production
+
+### 🎨 **RimWorld Theme**
+
+- Authentic RimWorld-inspired color scheme
+- Orbitron font for sci-fi aesthetics
+- Grid-based visualization
+- Responsive design for all devices
+
+### 💾 **Export & Share**
+
+- Download layouts as JSON files
+- Import previously saved layouts
+- Generate shareable links for collaboration
+- Seed-based deterministic generation
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
