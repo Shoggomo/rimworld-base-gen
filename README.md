@@ -6,7 +6,7 @@ Design your buildings, set their relationships, and let the physics simulation a
 
 ## 🚀 Use It Online
 
-**[Open RimWorld Base Generator]()**
+**[Open RimWorld Base Generator](https://shoggomo.github.io/rimworld-base-gen/)**
 
 No installation required - use it directly in your browser!
 
